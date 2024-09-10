@@ -1,0 +1,33 @@
+.error-page-wrapper{
+    margin-top: 5%;
+    margin-left: 20%;
+    display: grid;
+    grid-template-rows: 300px ;
+    grid-template-columns: 350px 350px ;
+    
+}
+
+
+.error-pic{
+    object-fit: contain; 
+    width: 100%;
+}
+.error-info{
+    height: 350px;
+    width: 500px;
+}
+
+.error-status{
+    font-size: 30px;
+    -webkit-text-fill-color: red;
+}
+
+.error-msg{
+    font-size: 24px;
+    font-style: bold;
+    
+}
+.error-debug-msg{
+    font-size: 16px;
+    
+}

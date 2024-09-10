@@ -1,0 +1,102 @@
+.identify-plant-picture-icon{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(213deg) brightness(108%) contrast(106%);
+}
+
+.identify-plants-popup{
+    border: "solid 1px black";
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 10%; 
+}
+
+.identify-plants-popup-form{
+    background-color: rgb(60,66,75);
+    color: white;
+    padding: 10px;
+    font-size:16px;
+    font-weight: 400;
+}
+
+.identify-plants-popup-form input[type="file"]{
+    visibility: hidden;
+}
+
+.identify-plants-custom-file-button{
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    color:#fff;
+    background-color:#28a745;
+    border-color: #28a745;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    line-height: 1.5;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+
+}
+.identify-plant-card{
+    max-width: 550px;
+    min-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.gardening-tips-uploaded-img{
+    max-height: 450px;
+    object-fit: contain;
+}
+
+@media(max-width:650px){
+    .identify-plant-card{
+        max-width: 500px;
+    }
+}
+
+@media(max-width:550px){
+    .identify-plant-card{
+        max-width: 450px;
+    }
+}
+
+@media(max-width:500px){
+    .identify-plants-popup-form{
+        font-size: 14px;
+        max-width: 400px;
+    }
+    .identify-plants-custom-file-button{
+        font-size: 14px;
+        padding: 5px;
+    
+    }
+    .identify-plant-card{
+        max-width: 350px;
+    }
+}
+@media(max-width:400px){
+    .identify-plants-popup-form{
+        font-size: 14px;
+        max-width: 350px;
+    }
+    .identify-plants-custom-file-button{
+        font-size: 14px;
+        padding: 5px;
+    
+    }
+    .identify-plant-card{
+        max-width: 250px;
+    }
+}
+@media(max-width:377px){
+    .identify-plants-popup-form{
+        font-size: 13px;
+        max-width: 300px;
+        padding: 5px;
+        height: 110px;
+    }
+    .identify-plants-custom-file-button{
+        font-size: 13px;
+        padding: 5px;
+    
+    }
+}

@@ -1,0 +1,54 @@
+.plant-card-wrapper .carousel-inner{
+    max-width: 550px;
+    min-height: 720px;
+}
+
+.plant-card-wrapper .visually-hidden{
+    display:none;
+}
+
+.plant-card-wrapper .carousel-control-next-icon,.carousel-control-prev-icon{
+    background-color: black;
+
+}
+.plant-card-wrapper.carousel-control-next{ 
+    left: 85%;
+}
+.plant-card-wrapper .carousel-control-prev{
+    right: 45%;
+}
+
+@media(max-width:992px){
+    h3{
+        font-size: 24px;
+    }
+}
+@media(max-width:650px){
+    h3{
+        font-size: 22px;
+    }
+    .plant-card-wrapper .carousel-inner{
+        max-width: 500px;
+        min-height: 720px;
+    }
+}
+
+@media(max-width:600px){
+    .plant-card-wrapper .carousel-inner{
+        max-width: 450px;
+        min-height: 720px;
+    }
+}
+
+ @media(max-width:550px){
+    h3{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:450px){
+    .plant-card-wrapper .carousel-inner{
+        max-width: 350px;
+        min-height: 720px;
+    }
+} 

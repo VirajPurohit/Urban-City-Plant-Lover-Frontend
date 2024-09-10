@@ -1,0 +1,41 @@
+
+.mobile-sidebar{
+    max-width: 150px;
+    height: 500px;  
+    border: 25px solid transparent; 
+    border-image: url("../assets/Vine-Border2.jpg");
+    border-image-slice: 25%;
+    border-image-repeat: round;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+}
+
+.mobile-sidebar-Items-Container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap :5px;
+    height: 400px;
+    
+    
+}
+
+.mobile-sidebar-Items{
+    height: fit-content;
+    border-top:  1px solid black ;
+    border-bottom: 1px solid black ;
+    text-align: center;
+}
+
+.hamburger{
+    height: 50px;
+    width:  50px;
+}
+
+@media(max-width:992px){
+    .hamburger{
+        height: 35px;
+        width:  35px;
+    }
+}

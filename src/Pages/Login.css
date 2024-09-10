@@ -1,0 +1,26 @@
+.login-form-container{
+    margin-top: 10%;
+    margin-left: 20%;
+    display: grid;
+    grid-template-rows: 300px ;
+    grid-template-columns: 350px 350px ;
+}
+
+
+.garden-img{  
+    height:350px;
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.login-form{
+ text-align: center;
+ border: 1px solid black;
+ height: 350px;
+
+}
+
+
+
+ 

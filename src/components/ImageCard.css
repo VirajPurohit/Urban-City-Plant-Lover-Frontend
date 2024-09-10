@@ -1,0 +1,18 @@
+.imageCard{
+ max-width : 18rem;
+ background-color: #343a40 !important;
+ color: #fff !important;
+}
+
+/* @media (max-width: 962px) {
+    .imageCard{
+        max-width : 16.5rem;
+       }
+}
+
+@media (max-width:950px) {
+    .imageCard{
+        max-width : 16.5rem;
+       }
+}
+     */

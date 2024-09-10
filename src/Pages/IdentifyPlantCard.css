@@ -1,0 +1,47 @@
+.identify-plants-result-card{
+    max-width: 550px;
+    min-height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.identify-plants-result-img{
+    height: 450px;
+    object-fit: contain;
+}
+
+@media(max-width:992px){
+    h3{
+        font-size: 24px;
+    }
+}
+@media(max-width:650px){
+    h3{
+        font-size: 22px;
+    }
+    .identify-plants-result-card{
+        max-width: 500px;
+        min-height: 720px;
+    }
+}
+
+@media(max-width:600px){
+    .identify-plants-result-card{
+        max-width: 450px;
+        min-height: 720px;
+    }
+}
+
+ @media(max-width:550px){
+    h3{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:450px){
+    .identify-plants-result-card{
+        max-width: 350px;
+        min-height: 720px;
+    }
+} 

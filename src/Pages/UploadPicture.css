@@ -1,0 +1,120 @@
+.upload-picture-icon{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(213deg) brightness(108%) contrast(106%);
+}
+
+.upload-picture-popup{
+    border: "solid 1px black";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.upload-picture-popup-form{
+    background-color: rgb(60,66,75);
+    color: white;
+    padding: 10px;
+    font-size:16px;
+    font-weight: 400;
+    max-width: 450px;
+}
+
+.upload-picture-popup-form input[type="file"]{
+    visibility: hidden;
+}
+
+.upload-picture-custom-file-button{
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    color:#fff;
+    background-color:#28a745;
+    border-color: #28a745;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    line-height: 1.5;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+
+}
+
+.post-image{
+    max-height: 450px;
+    object-fit: contain;
+}
+
+
+.error{
+    color: red;
+    font-size: 10px;
+
+}
+
+input[type="text"], textarea{
+    border: none;
+}
+
+input:focus, textarea:focus{
+    outline: none;
+}
+
+.upload-picture-card{
+    max-width: 550px;
+    min-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media(max-width:650px){
+    .upload-picture-card{
+        max-width: 500px;
+    }
+}
+
+@media(max-width:550px){
+    .upload-picture-card{
+        max-width: 450px;
+    }
+}
+
+@media(max-width:500px){
+    .upload-picture-popup-form{
+        font-size: 14px;
+        max-width: 400px;
+    }
+    .upload-picture-custom-file-button{
+        font-size: 14px;
+        padding: 5px;
+    
+    }
+    .upload-picture-card{
+        max-width: 350px;
+    }
+}
+@media(max-width:400px){
+    .upload-picture-popup-form{
+        font-size: 14px;
+        max-width: 350px;
+    }
+    .upload-picture-custom-file-button{
+        font-size: 14px;
+        padding: 5px;
+    
+    }
+    .upload-picture-card{
+        max-width: 250px;
+    }
+}
+@media(max-width:377px){
+    .upload-picture-popup-form{
+        font-size: 13px;
+        max-width: 300px;
+        padding: 5px;
+        height: 110px;
+    }
+    .upload-picture-custom-file-button{
+        font-size: 13px;
+        padding: 5px;
+    
+    }
+}
