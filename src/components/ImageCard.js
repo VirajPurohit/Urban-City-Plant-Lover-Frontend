@@ -17,7 +17,7 @@ export default function ImageCard({ gallery }) {
   return (
     <>
       {gallery.map(function (post, index) {
-        let id = post.id;
+        let id = post._id;
         let imgsrc = post.pic.fileURL;
         let title = post.title;
 

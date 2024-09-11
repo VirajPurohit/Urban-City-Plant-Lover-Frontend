@@ -3,8 +3,23 @@
     margin-right: auto;
     max-width: 550px;
 }
+
+.fetched-comment{
+    width: 550px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+/* .fetched-comments-wrapper{
+    margin-left: auto;
+    margin-right: auto;
+} */
+
 @media(max-width:950px){   
     .comment-form{
+        max-width: 500px; 
+    }
+    .fetched-comment{
         max-width: 500px; 
     }
 }
@@ -14,6 +29,9 @@
         max-width: 350px;
         
     }
+    .fetched-comment{
+        max-width: 350px; 
+    }
 }
 
 
@@ -21,5 +39,8 @@
     .comment-form{
         max-width: 295px;
         
+    }
+    .fetched-comment{
+        max-width: 295px; 
     }
 } 

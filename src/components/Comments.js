@@ -117,55 +117,60 @@ export default function Comments({ user, post, SetError }) {
       </Form>
       <br />
       {comments.length > 0 && (
-        <Stack direction="vertical" style={{ margin: "auto", width: "50%" }}>
-          {comments.map((comment) => {
-            return (
-              <>
-                <Card key={comment._id}>
-                  <Card.Header className="dflex-justify-content-between">
-                    <span>
-                      <Image
-                        src={comment.profilePic}
-                        roundedCircle
-                        style={{
-                          maxHeight: "22px",
-                        }}
-                      />
-                      <span
-                        className="username p-2"
-                        style={{
-                          fontSize: "12px",
-                        }}
-                      >
-                        {comment.username}
+        <div className="fetched-comments-wrapper">
+          <Stack
+            direction="vertical"
+            // style={{ marginLeft: "auto", marginRight: "auto" }}
+          >
+            {comments.map((comment) => {
+              return (
+                <>
+                  <Card key={comment._id} className="fetched-comment">
+                    <Card.Header className="dflex-justify-content-between">
+                      <span>
+                        <Image
+                          src={comment.profilePic}
+                          roundedCircle
+                          style={{
+                            maxHeight: "22px",
+                          }}
+                        />
+                        <span
+                          className="username p-2"
+                          style={{
+                            fontSize: "12px",
+                          }}
+                        >
+                          {comment.username}
+                        </span>
+                        <span
+                          className="postedOn p-2"
+                          style={{
+                            fontSize: "12px",
+                          }}
+                        >
+                          {comment.commentedAt.split("T")[0]}
+                        </span>
                       </span>
-                      <span
-                        className="postedOn p-2"
-                        style={{
-                          fontSize: "12px",
-                        }}
-                      >
-                        {comment.commentedAt.split("T")[0]}
-                      </span>
-                    </span>
-                    {user.username === comment.username && (
-                      <Delete
-                        style={{ height: "25px", width: "25px" }}
-                        className="ms-auto"
-                        onClick={(event) => handleDelete(comment._id, event)}
-                      />
-                    )}
-                  </Card.Header>
+                      {user.username === comment.username && (
+                        <Delete
+                          style={{ height: "25px", width: "25px" }}
+                          className="ms-auto"
+                          onClick={(event) => handleDelete(comment._id, event)}
+                        />
+                      )}
+                    </Card.Header>
 
-                  <Card.Body>
-                    <Card.Text>{comment.comment}</Card.Text>
-                  </Card.Body>
-                </Card>
-                <br />
-              </>
-            );
-          })}
-        </Stack>
+                    <Card.Body>
+                      <Card.Text>{comment.comment}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                  <br />
+                </>
+              );
+            })}
+          </Stack>
+        </div>
       )}
     </>
   );
