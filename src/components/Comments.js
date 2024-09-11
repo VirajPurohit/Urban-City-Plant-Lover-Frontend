@@ -5,7 +5,7 @@ import axios from "axios";
 import io from "socket.io-client";
 import "./Comment.css";
 
-const socket = io(`${process.env.REACT_APP_SERVER_IP}`);
+const socket = io(`${process.env.REACT_APP_SERVER_IP}`); // Need to find solution for this in Prod
 
 export default function Comments({ user, post, SetError }) {
   const [comments, setComments] = useState([]);

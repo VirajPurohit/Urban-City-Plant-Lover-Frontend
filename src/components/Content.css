@@ -3,11 +3,193 @@
     padding: 0px 25px;
 }
 
-.carousel-control-next, .carousel-control-prev{
+/* .carousel-control-next, .carousel-control-prev{
     color:black !important;
     opacity: 0.95 !important;
+} */
+
+
+/*gardening-tips > carousel slide > carousel-indicators (slide- deck at bottom), carousel-inner (conatins individual slides) > carousel-control-next-icon, carousel-control-prev-icon */
+/* .gardening-tips : wrapper for Benefits of gardening carousel */
+.gardening-tips{
+    max-width:900px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+/* Below 3 CSS classes are common for Benefits of gardening, Urban Planting Tips section */
+/* individual slide inside carousel-inner class */
+.gardening-tips .carousel-item{
+    position: "relative";
+    left: 10%;
+    right: 10%;
+}
+
+.carousel-indicators{
+    display:none !important;
 }
 
 .carousel-control-next-icon,.carousel-control-prev-icon{
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(94%) contrast(102%) !important;
+    background-color: grey;
+}
+
+/* p tag inside carousel slide for description */
+.slide-description{
+    max-width: 500px;
+}
+.urban-gardening-tips-section{
+    margin-top: 25px;
+}
+.urban-gardening-tips-section p{
+    font-size: 18px;
+}
+
+.urban-gardening-carousel-wrapper{
+    margin-top: 15px;
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.urban-gardening-carousel-wrapper .card-text{
+    font-size: 16px;
+
+}
+
+.urban-gardening-carousel-wrapper .carousel-item{
+    margin-inline: auto;
+    left: 20%
+}
+
+@media(max-width: 992px){
+    h2{
+        font-size: 22px;
+    }
+    h4{
+        font-size: 18px;
+    }
+    .slide-description{
+        font-size: 14px;
+    }
+    .gardening-tips .carousel-item{
+        position: "relative";
+        left: 10%;
+        right: 5%;
+        min-height:175px;
+    }
+    .gardening-tips p{
+        max-width: 500px;
+    }
+    .urban-gardening-tips-section{
+        margin-top: 5px;
+    }
+    .urban-gardening-tips-section p{
+        font-size: 14px;
+    }
+    .urban-gardening-carousel-wrapper .card-text{
+        font-size: 14px;
+    
+    }
+    
+    .urban-gardening-carousel-wrapper .carousel-item{
+        margin-inline: auto;
+        left: 10%
+    }
+
+}
+
+@media(max-width: 760px){
+    .gardening-tips{
+        max-width:700px; 
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+    }
+    .gardening-tips .carousel-item{
+        position: "relative";
+        min-height:175px;
+        left:2.5%;
+
+    }
+    .gardening-tips .carousel-item img{
+        height: 75px;
+        width: 90px
+    }
+}
+
+@media(max-width: 738px){
+    .gardening-tips{
+        max-width:700px; 
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+    }
+    .gardening-tips .carousel-item{
+        position: "relative";
+        min-height:200px;
+        left:2.5%;
+
+    }
+    .gardening-tips .carousel-item img{
+        height: 75px;
+        width: 90px
+    }
+    .gardening-tips .carousel-item p{
+        max-width:500px;
+        min-height:150px;
+    }
+}
+
+@media(max-width:700px){
+    .gardening-tips .carousel-item{
+        position: "relative";
+        width:auto;
+        height: auto;
+        left:0%;
+
+    }
+    .gardening-tips .carousel-item p{
+        max-width: 500px;
+        min-height: 150px;
+    }
+    .gardening-tips .carousel-control-next-icon, .gardening-tips .carousel-control-prev-icon{
+        display: none;
+        
+    }
+    
+}
+@media(max-width: 639px){
+    .gardening-tips .carousel-item p{
+        max-width: 400px;
+        min-height: 150px;
+    }
+}
+
+@media(max-width: 601px){
+    .Content-Wrapper{
+        padding: none;
+        margin: none;
+    }
+
+    .gardening-tips .carousel-item{
+        max-width: 400px;
+        min-height: 150px;
+    }
+    
+    .urban-gardening-tips-section .carousel-item{
+        max-width: 400px;
+        left: 0%;
+    }
+}
+@media(max-width:450px){
+    .gardening-tips .carousel-item{
+        max-width: 300px;
+        min-height: 150px;
+    }
+    
+    .urban-gardening-tips-section .carousel-item{
+        max-width: 200px;
+        left: 0%;
+    }
+    
 }

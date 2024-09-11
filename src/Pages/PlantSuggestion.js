@@ -3,6 +3,9 @@ import { cities } from "../utils/cities";
 import axios from "axios";
 import PlantCards from "./PlantCards";
 import { Spinner } from "react-bootstrap";
+import Error from "../components/Error";
+import Header from "../components/Header";
+import "./PlantSuggestion.css";
 
 export default function PlantSuggestion() {
   const [APIcity, setAPICity] = useState("");
@@ -14,19 +17,36 @@ export default function PlantSuggestion() {
   const [disableBtnTwo, setdisableBtnTwo] = useState(false);
   const [APIdata, setAPIData] = useState(null);
   const [loading, setloading] = useState(false);
+  const [error, SetError] = useState({
+    isError: false,
+    status: "",
+    message: "",
+    debugMsg: "",
+    stack: "",
+  });
 
   async function getResponseFromAPI(city, plantType) {
-    let data = null;
+    let response;
     try {
-      data = await axios.post("http://localhost:5000/confirmAddress", {
-        cityName: city,
-        plantTypeVal: plantType,
-      });
+      response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/plantSuggestions`,
+        {
+          cityName: city,
+          plantTypeVal: plantType,
+        },
+        { withCredentials: true }
+      );
+      if (response && response.status === 200) {
+        setAPIData(response.data);
+      }
     } catch (err) {
-      console.log(err);
-    }
-    if (data.status === 200) {
-      setAPIData(data.data);
+      SetError({
+        isError: true,
+        status: err.response.status,
+        message: err.message,
+        debugMsg: err.response.data.msg,
+        stack: err.response.data.stack,
+      });
     }
   }
 
@@ -58,51 +78,52 @@ export default function PlantSuggestion() {
     }
   }
 
-  function handleCityChange(event){
+  function handleCityChange(event) {
     const city = event.target.value;
-    if(city !== ""){
+    if (city !== "") {
       setCityFromForm(city);
-    }
-    else{
+    } else {
       setCityFromForm("");
     }
-    
-    
   }
 
   useEffect(() => {
     alert(
-      "We wish to access your location, to provide plant suggestions based on it"
+      "We wish to access your location, to provide plant suggestions based on it. This info will not be stored anywhere"
     );
-    if ("geolocation" in navigator) {
-      setloading(true);
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude;
-        let long = position.coords.longitude;
-        axios
-          .post(`http://localhost:5000/getAddr/${lat}/${long}`)
-          .then((response) => {
-            if (response.status === 200) {
-              setAPICity(response.data);
-              setloading(false);
-            } else {
-              throw new Error(response.data.message);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-    } else {
-      console.log("Geolocation is not available in your browser.");
+    function success(position) {
+      let lat = position.coords.latitude;
+      let long = position.coords.longitude;
+      const URL = `${process.env.REACT_APP_SERVER_URL}/getAddr/${lat}/${long}`;
+      axios
+        .post(URL)
+        .then((response) => {
+          if (response.status === 200) {
+            //console.log(response.status, response);
+            setAPICity(response.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-    
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function error(err) {
+      console.log(
+        `Navigator.geolocation.getCurrentPosition ERROR(${err.code}): ${err.message}`
+      );
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
 
-  if (APIdata !== null) {
-    return <PlantCards data={APIdata.results} city={cityFromForm === ""? APIcity: cityFromForm } />;
-  }
-  if (loading) {
+  /* if (loading) {
     return (
       <div
         style={{
@@ -115,93 +136,123 @@ export default function PlantSuggestion() {
         <Spinner animation="border" varaint="success" />
       </div>
     );
-  }
- 
-  if (APIcity !== "") {
-    return (
-      <>
-        <div>
-          We have detected your location is {APIcity}.<br />
-          If correct,please select type of plant and confirm,
-          <br />
-          else please select your city and type of plant in the section below.
-          <br />
-          <br />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <fieldset disabled={disableFormOne}>
-            <input type="hidden" id="form" value="form1" />
-            <input type="hidden" id="city" name="city" value={APIcity} />
-            <label for="plantType">
-              {" "}
-              Select between Indoor/ Outdoor plants{" "}
-            </label>
-            <br />
-            <select name="plantType">
-              <option value="indoor">Indoor</option>
-              <option value="outdoor">Outdoor</option>
-            </select>
-            <br />
-            <br />
-            <button type="submit" disabled={disableBtnOne}>
-              Confirm
-            </button>
-          </fieldset>
-        </form>
-        <br />
-        <hr />
-        <br />
-        {/*--------Selecting City Manually --------------*/}
-        <h2> Select your city</h2>
-        <form onSubmit={handleSubmit}>
-          <fieldset disabled={disableFormTwo}>
-            <input type="hidden" id="form" value="form2" />
-            <label for="state">Select State:</label>
-            <br />
-            <select name="state" id="state" onChange={handleChange}>
-              <option value="" selected>
-                Please select your state
-              </option>
-              <option value="maharashtra">Maharashtra</option>
-              <option value="telangana">Telangana</option>
-            </select>
-            <br />
-            <br />
+  }*/
 
-            <label for="city"> Select your city of residence:</label>
+  return (
+    <>
+      {APIdata === null &&
+        (error.isError ? (
+          <Error err={error} />
+        ) : loading ? (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%,-50%)",
+            }}
+          >
+            <Spinner animation="border" varaint="success" />
+          </div>
+        ) : (
+          <>
+            <Header isMobile={true} />
+            <div className="plant-suggestion">
+              We have detected your location is <b>{APIcity}</b>.<br />
+              If correct,please select type of plant and confirm,
+              <br />
+              else please select your city and type of plant in the section
+              below.
+              <br />
+              <br />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <fieldset disabled={disableFormOne}>
+                <input type="hidden" id="form" value="form1" />
+                <input type="hidden" id="city" name="city" value={APIcity} />
+                <label htmlFor="plantType">
+                  {" "}
+                  Select between Indoor/ Outdoor plants{" "}
+                </label>
+                <br />
+                <select name="plantType">
+                  <option value="indoor">Indoor</option>
+                  <option value="outdoor">Outdoor</option>
+                </select>
+                <br />
+                <br />
+                <button type="submit" disabled={disableBtnOne}>
+                  Confirm
+                </button>
+              </fieldset>
+            </form>
             <br />
-            <select name="city" id="city" onChange={handleCityChange}>
-            <option value="" selected>
-                Please select your city
-              </option>
-              {cityOption.map(function (city, index) {
-                return (
-                  <option key={index} value={city}>
-                    {city}
+            <hr />
+            <br />
+            {/*--------Selecting City Manually --------------*/}
+            <h2> Select your city</h2>
+            <form onSubmit={handleSubmit}>
+              <fieldset disabled={disableFormTwo}>
+                <input type="hidden" id="form" value="form2" />
+                <label htmlFor="state">Select State:</label>
+                <br />
+                <select name="state" id="state" onChange={handleChange}>
+                  <option value="" defaultValue>
+                    Please select your state
                   </option>
-                );
-              })}
-            </select>
-            <br />
-            <br />
-            <label for="plantType">
-              {" "}
-              Select between Indoor/ Outdoor plants{" "}
-            </label>
-            <br />
-            <select name="plantType">
-              <option value="indoor">Indoor</option>
-              <option value="outdoor">Outdoor</option>
-            </select>
-            <br />
-            <br />
-            <button type="submit" disabled={disableBtnTwo}>
-              Confirm
-            </button>
-            <br />
-          </fieldset>
-        </form>
-      </>
-    );
-  }
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="telangana">Telangana</option>
+                </select>
+                <br />
+                <br />
+
+                <label htmlFor="city"> Select your city of residence:</label>
+                <br />
+                <select name="city" id="city" onChange={handleCityChange}>
+                  <option value="" defaultValue>
+                    Please select your city
+                  </option>
+                  {cityOption.map(function (city, index) {
+                    return (
+                      <option key={index} value={city}>
+                        {city}
+                      </option>
+                    );
+                  })}
+                </select>
+                <br />
+                <br />
+                <label htmlFor="plantType">
+                  {" "}
+                  Select between Indoor/ Outdoor plants{" "}
+                </label>
+                <br />
+                <select name="plantType">
+                  <option value="indoor">Indoor</option>
+                  <option value="outdoor">Outdoor</option>
+                </select>
+                <br />
+                <br />
+                <button type="submit" disabled={disableBtnTwo}>
+                  Confirm
+                </button>
+                <br />
+              </fieldset>
+            </form>
+          </>
+        ))}
+      {APIdata !== null &&
+        (error.isError ? (
+          <Error err={error} />
+        ) : (
+          <>
+            <Header isMobile={true} />
+            <PlantCards
+              data={APIdata.results}
+              city={cityFromForm === "" ? APIcity : cityFromForm}
+            />
+          </>
+        ))}
+    </>
+  );
 }

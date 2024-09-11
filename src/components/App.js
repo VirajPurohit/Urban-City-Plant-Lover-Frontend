@@ -16,7 +16,7 @@ function App() {
       const url = `${process.env.REACT_APP_SERVER_URL}/auth/login/success`;
       const { data } = await axios.get(url, { withCredentials: true });
       setUser(data.user);
-      console.log("User State: ", user);
+      // console.log("User State: ", user);
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +40,7 @@ function App() {
         <Route
           exact
           path="/login"
-          element={user !== null ? <Home /> : <Navigate to="/login" />}
+          element={user !== null ? <Home /> : <Login />}
         />
       </Routes>
     </BrowserRouter>

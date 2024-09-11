@@ -3,12 +3,12 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Content from "../components/Content";
 
-export default function Home() {
+export default function Home({ isMobile }) {
   return (
     <>
-      <Header />
+      <Header isMobile={isMobile} />
       <div style={{ display: "flex", flexDirection: "row", columnGap: "15px" }}>
-        <Sidebar />
+        <Sidebar isMobile={isMobile} />
         <Content />
       </div>
     </>

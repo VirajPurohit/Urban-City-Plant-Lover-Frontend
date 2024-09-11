@@ -1,23 +1,42 @@
-import React from "react";
+import { React, useEffect } from "react";
+import axios from "axios";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import "./GardeningTipsCard.css";
+import Header from "../components/Header";
 
-export default function GardeningTipsCard({ data, img }) {
+export default function GardeningTipsCard({ data, img, publicId }) {
+  useEffect(() => {
+    return () => {
+      onBeforeUnload();
+    };
+  }, []);
+
+  const onBeforeUnload = async (e) => {
+    const formData = new FormData();
+    formData.append("publicId", data.publicId);
+    try {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/removePic`, {
+        publicId: publicId,
+      });
+    } catch (err) {
+      console.log(err.status, err.message);
+    }
+  };
+
   return (
     <>
+      <Header isMobile={true} />
       <h3 style={{ textAlign: "center" }}>
         {" "}
         Gardening Tips from Google Gemini for your selected plant
       </h3>
-      <Card
-        style={{
-          margin: "auto",
-          width: "50%",
-        }}
-      >
+      <Card className="gardening-tips-result-card">
         <Card.Img
           variant="top"
           src={img}
-          style={{ marginLeft: "10%", height: "450px", width: "500px" }}
+          //style={{ objectFit: "contain", maxHeight: "550px" }}
+          className="gardening-tips-result-img"
+          fluid
         />
         <Card.Body>
           <Card.Title> Common Name: {data.name}</Card.Title>

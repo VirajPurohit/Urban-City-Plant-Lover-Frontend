@@ -27,10 +27,11 @@ const Feed = ({ images }) => {
   const styleobj = {
     "margin-top": "5px",
     display: "grid",
-    "grid-template-columns": `repeat(${Math.round(width / 315)},300px)`,
+    "grid-template-columns": `repeat(auto-fill,300px)`,
     "grid-auto-rows": "auto",
     //overflow: "hidden",
     gap: "15px",
+    width: "100%",
   };
 
   return (

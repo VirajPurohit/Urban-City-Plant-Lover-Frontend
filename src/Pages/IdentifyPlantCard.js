@@ -1,26 +1,43 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import { React, useEffect } from "react";
+import { Card, Image } from "react-bootstrap";
+import axios from "axios";
+import Header from "../components/Header";
+import "./IdentifyPlantCard.css";
 
-export default function IdentifyPlantCard({ data, img }) {
+export default function IdentifyPlantCard({ data, img, publicId }) {
+  useEffect(() => {
+    return () => {
+      onBeforeUnload();
+    };
+  }, []);
+
+  const onBeforeUnload = async (e) => {
+    const formData = new FormData();
+    formData.append("publicId", publicId);
+    try {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/removePic`, {
+        publicId: publicId,
+      });
+    } catch (err) {
+      console.log(err.status, err.message);
+    }
+  };
+
   return (
     <>
-      <h3 style={{ textAlign: "center" }}>
-        {" "}
-        Identify that plant with the help from Google Gemini !!
-      </h3>
-      <Card
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          width: "50%",
-        }}
-      >
-        <Card.Img
-          variant="top"
+      <Header isMobile={true} />
+      <Card className="identify-plants-result-card">
+        <Card.Header>
+          <Card.Title as="h3">Identify plants with Google Gemini</Card.Title>
+        </Card.Header>
+        <Image
           src={img}
-          style={{ marginLeft: "10%", height: "450px", width: "500px" }}
+          style={{
+            objectFit: "contain",
+            maxHeight: "550px",
+          }}
+          className="identify-plants-result-image"
+          fluid
         />
         <Card.Body>
           <Card.Title> Common Name: {data.name}</Card.Title>
