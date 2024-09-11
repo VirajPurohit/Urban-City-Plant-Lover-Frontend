@@ -1,8 +1,8 @@
 .Sidebar{
     width: 200px;
-    height: 100vh;  
+    height: 500px;  
     border: 25px solid transparent;
-    border-image-slice: 10%;
+    border-image-slice: 25%;
     border-image-repeat: round;
     
 }
