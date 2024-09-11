@@ -52,20 +52,26 @@ export default function PlantSuggestion() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    if (event.target.city.value !== "") {
+      if (event.target.form.value === "form1") {
+        setdisableFormTwo(true);
+        setdisableBtnOne(true);
+      } else {
+        setdisableFormOne(true);
+        setdisableBtnTwo(true);
+      }
 
-    if (event.target.form.value === "form1") {
-      setdisableFormTwo(true);
-      setdisableBtnOne(true);
+      setloading(true);
+      await getResponseFromAPI(
+        event.target.city.value,
+        event.target.plantType.value
+      );
+      setloading(false);
     } else {
-      setdisableFormOne(true);
-      setdisableBtnTwo(true);
+      alert(
+        "City is not selected, there might have been an unexpected error fetching your location. Kindly select city manually"
+      );
     }
-    setloading(true);
-    await getResponseFromAPI(
-      event.target.city.value,
-      event.target.plantType.value
-    );
-    setloading(false);
   }
 
   function handleChange(event) {
