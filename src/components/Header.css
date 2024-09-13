@@ -73,7 +73,10 @@
     .title{
         display: none!important;
      }
-}
+     .login-btn{
+        margin-left: auto;
+     }
+    }
 
 @media (max-width:600px){
     .profile-img{
