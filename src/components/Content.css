@@ -168,7 +168,7 @@
     }
 }
 
-@media(max-width: 601px){
+@media screen and (max-width: 601px){
     .Content-Wrapper{
         padding: none;
         margin: none;
@@ -184,7 +184,7 @@
         left: 0%;
     }
 }
-@media(max-width:450px){
+@media screen and (max-width:450px){
     .gardening-tips{
         margin-top: 30px;
     }
