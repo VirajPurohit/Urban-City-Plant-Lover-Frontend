@@ -1,6 +1,6 @@
 .identify-plants-result-card{
     max-width: 550px;
-    min-height: 650px;
+    height: "fit-content";
     margin-left: auto;
     margin-right: auto;
 
