@@ -33,7 +33,7 @@
     width:  50px;
 }
 
-@media(max-width:992px){
+@media screen and (max-width:992px){
     .hamburger{
         height: 35px;
         width:  35px;

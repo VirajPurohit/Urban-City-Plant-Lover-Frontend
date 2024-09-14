@@ -15,7 +15,7 @@
     min-height: "fit-content";
     margin-top: 2%;
 }
-@media(max-width:950px){
+@media screen and (max-width:950px){
     
     .post-details-card{
         max-width: 500px;
@@ -23,14 +23,14 @@
     }
 }
 
-@media(max-width:600px){
+@media screen and (max-width:600px){
     .post-details-card{
         max-width: 350px;
     }
 }
 
 
-@media(max-width:450px){
+@media screen and (max-width:450px){
     .post-details-card{
         max-width: 295px;
     }

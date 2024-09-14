@@ -51,19 +51,19 @@
     object-fit: contain;
 }
 
-@media(max-width:650px){
+@media screen and (max-width:650px){
     .gardening-tips-card{
         max-width: 500px;
     }
 }
 
-@media(max-width:550px){
+@media screen and (max-width:550px){
     .gardening-tips-card{
         max-width: 450px;
     }
 }
 
-@media(max-width:500px){
+@media screen and (max-width:500px){
     .gardening-tips-popup-form{
         font-size: 14px;
         max-width: 400px;
@@ -77,7 +77,7 @@
         max-width: 350px;
     }
 }
-@media(max-width:400px){
+@media screen and (max-width:400px){
     .gardening-tips-popup-form{
         font-size: 14px;
         max-width: 350px;
@@ -91,7 +91,7 @@
         max-width: 250px;
     }
 }
-@media(max-width:377px){
+@media screen and (max-width:377px){
     .gardening-tips-popup-form{
         font-size: 13px;
         max-width: 300px;
