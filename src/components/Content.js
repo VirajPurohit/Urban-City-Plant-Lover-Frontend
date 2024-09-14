@@ -7,6 +7,7 @@ export default function Content() {
     <div className="Content-Wrapper">
       <h2> Benefits of Gardening</h2>
       <div className="gardening-tips">
+        <br />
         <Carousel>
           <Carousel.Item interval={5000}>
             <div className="d-flex flex-row">
@@ -129,7 +130,7 @@ export default function Content() {
           garden of any size and will learn how to grow urban vegetable gardens
           and care for plants in the city, even if you live in an apartment.
         </p>
-
+        <br />
         <div className="urban-gardening-carousel-wrapper">
           <Carousel>
             <Carousel.Item style={{ width: "500px" }} interval={15000}>

@@ -175,12 +175,12 @@
     }
 
     .gardening-tips .carousel-item{
-        max-width: 400px;
+        max-width: 100%;
         min-height: 150px;
     }
     
     .urban-gardening-tips-section .carousel-item{
-        max-width: 400px;
+        max-width: 100%;
         left: 0%;
     }
 }
@@ -188,15 +188,7 @@
     .gardening-tips{
         margin-top: 30px;
     }
-    .gardening-tips .carousel-item{
-        max-width: 300px;
-        min-height: 150px;
-    }
-    
-    .urban-gardening-tips-section .carousel-item{
-        max-width: 400px;
-        left: 0%;
-    }
+  
     .urban-gardening-tips-section .carousel-control-next-icon, .urban-gardening-tips-section .carousel-control-prev-icon{
         display: none;
         
